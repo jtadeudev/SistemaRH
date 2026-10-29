@@ -1,0 +1,60 @@
+<header class="border-b border-slate-200 bg-white">
+  <div class="mx-auto max-w-6xl px-4 py-5">
+    <p class="mb-4 text-2xl font-semibold text-indigo-700">SistemaRH</p>
+
+    <nav aria-label="Menu principal" class="flex flex-wrap gap-2 text-slate-700">
+      <a
+        routerLink="/login"
+        routerLinkActive="bg-indigo-100 text-indigo-800"
+        [routerLinkActiveOptions]="{ exact: true }"
+        ariaCurrentWhenActive="page"
+        class="rounded-md px-3 py-2 text-sm font-medium hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-indigo-600"
+        >Login</a
+      >
+      <a
+        routerLink="/cadastro"
+        routerLinkActive="bg-indigo-100 text-indigo-800"
+        [routerLinkActiveOptions]="{ exact: true }"
+        ariaCurrentWhenActive="page"
+        class="rounded-md px-3 py-2 text-sm font-medium hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-indigo-600"
+        >Cadastro</a
+      >
+      <a
+        routerLink="/funcionarios"
+        routerLinkActive="bg-indigo-100 text-indigo-800"
+        [routerLinkActiveOptions]="{ exact: true }"
+        ariaCurrentWhenActive="page"
+        class="rounded-md px-3 py-2 text-sm font-medium hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-indigo-600"
+        >Lista de funcionários</a
+      >
+      <a
+        routerLink="/funcionarios/novo"
+        routerLinkActive="bg-indigo-100 text-indigo-800"
+        [routerLinkActiveOptions]="{ exact: true }"
+        ariaCurrentWhenActive="page"
+        class="rounded-md px-3 py-2 text-sm font-medium hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-indigo-600"
+        >Novo funcionário</a
+      >
+      <a
+        routerLink="/enderecos"
+        routerLinkActive="bg-indigo-100 text-indigo-800"
+        [routerLinkActiveOptions]="{ exact: true }"
+        ariaCurrentWhenActive="page"
+        class="rounded-md px-3 py-2 text-sm font-medium hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-indigo-600"
+        >Endereços</a
+      >
+      <a
+        routerLink="/contatos"
+        routerLinkActive="bg-indigo-100 text-indigo-800"
+        [routerLinkActiveOptions]="{ exact: true }"
+        ariaCurrentWhenActive="page"
+        class="rounded-md px-3 py-2 text-sm font-medium hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-indigo-600"
+        >Contatos</a
+      >
+    </nav>
+  </div>
+</header>
+
+<main class="mx-auto w-full max-w-6xl px-4 py-8">
+  <router-outlet />
+</main>
