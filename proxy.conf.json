@@ -1,0 +1,9 @@
+{
+  "/agendacontatosapi/api/**": {
+    "target": "http://academico3.rj.senac.br",
+    "changeOrigin": true,
+    "headers": {
+      "cookie": ""
+    }
+  }
+}

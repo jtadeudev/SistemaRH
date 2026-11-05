@@ -3,16 +3,26 @@
     <h1 id="titulo-login" class="text-2xl font-semibold text-slate-900">Login no SistemaRH</h1>
     <p class="mt-2 mb-6 text-sm text-slate-600">Entre na sua conta.</p>
 
-    <form class="space-y-4">
+    <form class="space-y-4" [formGroup]="form" (ngSubmit)="entrar()">
+      @let emailInvalido = form.controls.email.touched && form.controls.email.invalid;
+      @let senhaInvalida = form.controls.senha.touched && form.controls.senha.invalid;
+
       <div>
         <label for="login-email" class="mb-1 block text-sm font-medium">E-mail</label>
         <input
           id="login-email"
           name="email"
+          formControlName="email"
           type="email"
           autocomplete="email"
+          required
+          [attr.aria-invalid]="emailInvalido"
+          [attr.aria-describedby]="emailInvalido ? 'login-email-erro' : null"
           class="w-full rounded-md border border-slate-300 px-3 py-2 focus:border-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-200"
         />
+        @if (emailInvalido) {
+          <p id="login-email-erro" class="mt-1 text-sm text-red-700">Informe um e-mail válido.</p>
+        }
       </div>
 
       <div>
@@ -20,17 +30,31 @@
         <input
           id="login-senha"
           name="senha"
+          formControlName="senha"
           type="password"
           autocomplete="current-password"
+          required
+          [attr.aria-invalid]="senhaInvalida"
+          [attr.aria-describedby]="senhaInvalida ? 'login-senha-erro' : null"
           class="w-full rounded-md border border-slate-300 px-3 py-2 focus:border-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-200"
         />
+        @if (senhaInvalida) {
+          <p id="login-senha-erro" class="mt-1 text-sm text-red-700">Informe sua senha.</p>
+        }
       </div>
 
+      @if (erro(); as mensagem) {
+        <p role="alert" class="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">
+          {{ mensagem }}
+        </p>
+      }
+
       <button
-        type="button"
-        class="w-full cursor-pointer rounded-md bg-indigo-700 px-4 py-2 font-medium text-white hover:bg-indigo-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        type="submit"
+        [disabled]="carregando()"
+        class="w-full cursor-pointer rounded-md bg-indigo-700 px-4 py-2 font-medium text-white hover:bg-indigo-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:cursor-not-allowed disabled:opacity-60"
       >
-        Entrar
+        {{ carregando() ? 'Entrando...' : 'Entrar' }}
       </button>
     </form>
 
