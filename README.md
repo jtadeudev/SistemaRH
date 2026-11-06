@@ -38,20 +38,21 @@ As rotas `/lista-funcionarios` e `/formulario-funcionarios` do roteiro também l
 
 1. Abra `/enderecos` antes de entrar. O sistema redireciona para `/login`.
 2. Entre com um usuário de teste já cadastrado na API. Na aba **Network** do navegador, confira o `POST /auth/login`.
-3. Na aba **Application**, confira a chave `sistemarh_token` em Session Storage, Local Storage e Cookies. Recarregue uma tela interna para verificar a recuperação da sessão.
-4. Clique em **Sair** e confira que a chave foi removida dos três lugares e que o menu volta a mostrar Login e Cadastro.
+3. Na tela **Lista de funcionários**, confira o `GET /usuarios` na aba **Network**. A requisição envia o token no cabeçalho `Authorization`.
+4. Na aba **Application**, confira a chave `sistemarh_token` em Session Storage, Local Storage e Cookies. Recarregue uma tela interna para verificar a recuperação da sessão.
+5. Clique em **Sair** e confira que a chave foi removida dos três lugares e que o menu volta a mostrar Login e Cadastro.
 
 ## Organização
 
 - `src/app/components/`: os seis componentes das telas.
-- `src/app/services/`: serviço de autenticação e armazenamento do token.
-- `src/app/models/`: tipos usados para enviar as credenciais e ler a resposta da API.
+- `src/app/services/` reúne a autenticação e a consulta de funcionários.
+- `src/app/models/` reúne os tipos do login e dos funcionários.
 - `src/app/guards/`: proteção das rotas internas.
 - `src/app/interceptors/`: inclusão do token Bearer nas chamadas autenticadas à API.
 - `src/environments/`: configurações dos ambientes de desenvolvimento e produção.
 
 ## Etapa atual
 
-O login envia e-mail e senha à API. O cadastro é uma tela demonstrativa. A integração da lista de funcionários depende da rota e do formato da resposta descritos na coleção Postman da aula.
+O login envia e-mail e senha à API. A listagem usa o `GET /usuarios` da coleção Postman da aula e exibe ID, nome e e-mail. A coleção define a requisição e a lista espera um array de usuários, direto ou dentro de `usuarios` ou `data`. O cadastro é uma tela demonstrativa.
 
 Versões utilizadas: Angular 22.2.4, Angular CLI 22.2.5 e TailwindCSS 4.
